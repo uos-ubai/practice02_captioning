@@ -1,0 +1,33 @@
+project:
+  type: book
+
+book:
+  title: "UBAI PRACTICE - Captioning"
+  author: "hs.hwang"
+  date: "2024. 11. 04."
+  page-footer:
+    left: |
+      Urban Big Data and AI Institution
+    right: |
+      University of Seoul
+  chapters:
+    - index.qmd
+
+format:
+  html:
+    theme: 
+      - minty
+      - r4ds.scss
+    author-meta: "hs.hwang"
+    callout-appearance: simple
+    fontsize: 1em
+    linestretch: 1.5
+    code-overflow: wrap
+    code-block-bg: true
+    code-block-border-left: true
+    number-sections: false
+  pdf:
+    documentclass: scrreprt
+
+
+

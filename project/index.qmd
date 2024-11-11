@@ -37,7 +37,7 @@ Terminal에서도 해당 경로에서 작업한다는 것을 알려주기 위해
 ### 환경 설정 {.unnumbered}
 다음 프로젝트를 수행하기 위한 가상환경을 생성하겠습니다.
 
-(1) enroot 가상환경
+**(1) enroot 가상환경**
 
 가상환경을 생성하고 활용하는 데에는 여러 방법이 있습니다. 그 중 enroot를 활용하여 버전 호환이 이루어진 가상환경을 구축하는 것을 가장 먼저 소개합니다.
 
@@ -63,7 +63,7 @@ enroot start --root --rw --mount .:/mnt ubuntu-test /bin/bash
     
 
 
-(2) conda 가상환경
+**(2) conda 가상환경**
 
 이 외에도 conda를 통해 가상환경을 생성하여 활용하실 수 있습니다.
 
@@ -78,7 +78,7 @@ enroot start --root --rw --mount .:/mnt ubuntu-test /bin/bash
 
 `pip install -r requirements.txt` 명령어를 입력하여 필요한 라이브러리를 다운받겠습니다. requirements는 enroot와 conda 둘 다 필요한 작업입니다.
 
-💡 라이브러리를 다운받을 때에는 OS와 라이브러리 등 간의 버전 호환에 반드시 유의하세요! 버전 호환이 되지 않으면 에러가 발생할 수 있습니다!
+💡 **라이브러리를 다운받을 때에는 OS와 라이브러리 등 간의 버전 호환에 반드시 유의하세요! 버전 호환이 되지 않으면 에러가 발생할 수 있습니다!**
 
 ```{bash}
 #| eval: false
@@ -88,7 +88,9 @@ enroot start --root --rw --mount .:/mnt ubuntu-test /bin/bash
 torch==1.13.1+cu118
 torchvision==0.14.1+cu118
 transformers==4.24.0
+tqdm==4.64.1
 matplotlib==3.5.3
+pycocotools==2.0.6
 jupyter==1.0.0
 
 ```
@@ -189,6 +191,7 @@ echo "node: $HOSTNAME" # 접속한 노드 번호 표기
 echo "jobid: $SLURM_JOB_ID" # jobid 표기
 
 # Load modules
+module unload CUDA/11.2.2 
 module load cuda/11.8
 
 # Train the transformer-based image captioning model
@@ -216,6 +219,7 @@ echo "node: $HOSTNAME" # 접속한 노드 번호 표기
 echo "jobid: $SLURM_JOB_ID" # jobid 표기
 
 # Load modules
+module unload CUDA/11.2.2 
 module load cuda/11.8
 
 # Train the transformer-based image captioning model
@@ -247,7 +251,7 @@ module은 cuda 11.8 version을 사용하였습니다.
 
 out 파일에서 학습된 log를 통해, 실행 결과를 확인합니다.
 
-아래의 그림에 대해 "a shoe rack with some shoes and a dog sleeping on them"과 같은 caption이 생성된 것을 확인할 수 있습니다.
+아래의 그림에 대해 **"a shoe rack with some shoes and a dog sleeping on them"**과 같은 caption이 생성된 것을 확인할 수 있습니다.
 
 ![](./jpg/COCO_val2014_000000000042.jpg)
 

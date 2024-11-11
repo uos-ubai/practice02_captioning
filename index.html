@@ -226,9 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="환경-설정" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="환경-설정">환경 설정</h3>
 <p>다음 프로젝트를 수행하기 위한 가상환경을 생성하겠습니다.</p>
-<ol type="1">
-<li>enroot 가상환경</li>
-</ol>
+<p><strong>(1) enroot 가상환경</strong></p>
 <p>가상환경을 생성하고 활용하는 데에는 여러 방법이 있습니다. 그 중 enroot를 활용하여 버전 호환이 이루어진 가상환경을 구축하는 것을 가장 먼저 소개합니다.</p>
 <p>계산 노드에 진입하여 필요한 프레임워크와 OS 버전을 맞춰 enroot를 실행시킵니다.</p>
 <p>이후 계산에 필요한 이미지를 다운받고 컨테이너를 실행시킵니다.</p>
@@ -245,24 +243,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 컨테이너 환경에 진입</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">enroot</span> start <span class="at">--root</span> <span class="at">--rw</span> <span class="at">--mount</span> .:/mnt ubuntu-test /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li>conda 가상환경</li>
-</ol>
+<p><strong>(2) conda 가상환경</strong></p>
 <p>이 외에도 conda를 통해 가상환경을 생성하여 활용하실 수 있습니다.</p>
 <p><code>conda create -n captioning python=3.8</code> 명령어를 통해 python 버전 3.8을 가진 captioning 이라는 이름의 가상환경을 생성합니다.</p>
 <p>이후 <code>conda activate captioning</code>으로 가상환경에 진입합니다.</p>
 <p><img src="./jpg/env.jpg" class="img-fluid"></p>
 <p><br></p>
 <p><code>pip install -r requirements.txt</code> 명령어를 입력하여 필요한 라이브러리를 다운받겠습니다. requirements는 enroot와 conda 둘 다 필요한 작업입니다.</p>
-<p>💡 라이브러리를 다운받을 때에는 OS와 라이브러리 등 간의 버전 호환에 반드시 유의하세요! 버전 호환이 되지 않으면 에러가 발생할 수 있습니다!</p>
+<p>💡 <strong>라이브러리를 다운받을 때에는 OS와 라이브러리 등 간의 버전 호환에 반드시 유의하세요! 버전 호환이 되지 않으면 에러가 발생할 수 있습니다!</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># requirements.txt</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">torch</span><span class="op">=</span>=1.13.1+cu118</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">torchvision</span><span class="op">=</span>=0.14.1+cu118</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">transformers</span><span class="op">=</span>=4.24.0</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">matplotlib</span><span class="op">=</span>=3.5.3</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">jupyter</span><span class="op">=</span>=1.0.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">tqdm</span><span class="op">=</span>=4.64.1</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">matplotlib</span><span class="op">=</span>=3.5.3</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">pycocotools</span><span class="op">=</span>=2.0.6</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">jupyter</span><span class="op">=</span>=1.0.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 </section>
@@ -343,10 +341,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"jobid: </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span> <span class="co"># jobid 표기</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load modules</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.8</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the transformer-based image captioning model</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> transformer.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> unload CUDA/11.2.2 </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.8</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the transformer-based image captioning model</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> transformer.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>conda를 통해 가상환경 실행시켰다면, 노드 진입을 위한 셋팅이 추가로 필요하기 때문에 SBATCH를 추가해주세요.</p>
 <div class="cell">
@@ -366,10 +365,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"jobid: </span><span class="va">$SLURM_JOB_ID</span><span class="st">"</span> <span class="co"># jobid 표기</span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load modules</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.8</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the transformer-based image captioning model</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> transformer.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> unload CUDA/11.2.2 </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load cuda/11.8</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the transformer-based image captioning model</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> transformer.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>✔ <strong><code>#SBATCH --job-name=captioning</code></strong> job-name을 captioning으로 지정하였습니다.</p>
 <p>✔ output 파일과 error 파일은 output 폴더의 training_captioning이라는 파일명으로 지정하였습니다.</p>
@@ -381,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>프로젝트에서 tqdm 라이브러리를 통해 진척도를 확인할 수 있게 세팅해둠에 따라, error 파일에서 진척도를 시각적으로 확인할 수 있습니다.</p>
 <p><img src="./jpg/epoch.jpg" class="img-fluid"></p>
 <p>out 파일에서 학습된 log를 통해, 실행 결과를 확인합니다.</p>
-<p>아래의 그림에 대해 “a shoe rack with some shoes and a dog sleeping on them”과 같은 caption이 생성된 것을 확인할 수 있습니다.</p>
+<p>아래의 그림에 대해 <strong>“a shoe rack with some shoes and a dog sleeping on them”</strong>과 같은 caption이 생성된 것을 확인할 수 있습니다.</p>
 <p><img src="./jpg/COCO_val2014_000000000042.jpg" class="img-fluid"></p>
 <p><br></p>
 <p>이상으로 Captioning 프로젝트 실습을 종료합니다.</p>
